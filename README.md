@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8f305679-24cf-4136-a478-413411e78778/deploy-status)](https://app.netlify.com/sites/netlify-cms-react-example/deploys)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# netlify-cms-react-example
 
-## Available Scripts
+[![Edit netlify-cms-app Example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/k95z2k616r?fontsize=14)
 
-In the project directory, you can run:
+## Process to create this example
 
-### `npm start`
+Create the react app using `create-react-app`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+$ git clone https://github.com/ADARTA/netlify-cms-react-example.git
+$ cd netlify-cms-react-example
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+$ yarn start
+```
 
-### `npm test`
+### Create the the development proxy for the backend api
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+$ yarn add netlify-cms-proxy-server --dev
+```
 
-### `npm run build`
+`src/setupProxy.js` is recognized by the webpack [setup in react-scripts][2], so we use the middleware script from `netlify-cms-proxy-server/dist/middlewares/registerLocalFs` to create the `/api/v1` endpoint.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> Note: this feature is available with react-scripts@2.0.0 and higher.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`src/setupProxy.js`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```js
+const {
+  registerLocalFs,
+} = require("netlify-cms-proxy-server/dist/middlewares");
 
-### `npm run eject`
+module.exports = function (app) {
+  registerLocalFs(app);
+};
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Test the API endpoint by starting the development server using `npm run start` or `yarn start`. The proxy api will give you a message telling you the root and site path in the terminal. Browsing to `http://localhost:3000/api/v1` will confirm the API is up and running by returning a json error object letting you know it is the root of the api.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Creating your custom CMS application
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+This starter can be the beginning custom CMS or we can use this as a test for an existing NetlifyCMS configuration. Just clone the repository or download.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+$ yarn install
+$ yarn start
+```
 
 ## Learn More
 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[2]: https://facebook.github.io/create-react-app/docs/proxying-api-requests-in-development#configuring-the-proxy-manually

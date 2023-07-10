@@ -1,0 +1,15 @@
+{
+  "cSpell.words": [
+    "revrebel"
+  ],
+  "cSpell.enableFiletypes": [
+    "dockercompose",
+    "dockerfile",
+    "dotenv",
+    "git-rebase",
+    "shellcheck-output",
+    "shellscript",
+    "xml",
+    "yarnlock"
+  ]
+}
