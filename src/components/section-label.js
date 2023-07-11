@@ -1,8 +1,7 @@
-import styled from '@emotion/styled';
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme'
 
-import theme from '../theme';
-
-const SectionLabel = styled.h3`
+const SectionLabel = theme.h3`
   color: ${theme.colors.gray};
   font-size: ${theme.fontsize[1]};
   font-weight: 600;

@@ -1,9 +1,9 @@
 import React from 'react';
-import { css } from '@emotion/core';
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme'
+import { Container } from 'theme-ui'
 
-import Container from './container';
-import theme from '../theme';
-import { mq } from '../utils';
+import { mq } from '../utils/helpers';
 
 function PageHero({ children }) {
   return (

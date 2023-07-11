@@ -1,0 +1,11 @@
+siteTitle: Resource Hub by REVREBEL
+siteUrl: 'resource-hub.revrebel.io'
+siteDescription: >-
+  Welcome to the Resource Hub by REVREBEL, a go-to library for content guides. and all things related to hotel performance, system confirmation, and profit optimization to name a few.
+socialMediaCard:
+  image: /images/uploads/card-og.png
+  twitterCreatorAccount: '@revrebel'
+  twitterSiteAccount: ''
+headerScripts: |-
+  <!-- Add your analytics scripts / verification meta here -->
+enableServiceWorker: false

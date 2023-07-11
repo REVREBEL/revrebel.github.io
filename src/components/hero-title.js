@@ -1,9 +1,9 @@
-import styled from '@emotion/styled';
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme'
 
-import theme from '../theme';
-import { mq } from '../utils';
+import { mq } from '../utils/helpers';
 
-const HeroTitle = styled.h1`
+const HeroTitle = theme.h1`
   font-size: ${theme.fontsize[6]};
   margin-bottom: ${theme.space[1]};
 

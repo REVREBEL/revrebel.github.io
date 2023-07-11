@@ -1,8 +1,7 @@
-import styled from '@emotion/styled';
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme'
 
-import theme from '../theme';
-
-const MetaInfo = styled.p`
+const MetaInfo = theme.p`
   font-size: ${theme.fontsize[2]};
   margin-bottom: ${theme.space[4]};
 `;

@@ -1,9 +1,9 @@
 import React from 'react'
 
-import PageHeader from '../components/PageHeader'
-import LazyImage from '../components/LazyImage'
-import Content from '../components/Content.js'
-import './About.css'
+import PageHeader from '../components/page-header'
+import LazyImage from '../components/lazy-image'
+import Content from '../components/content'
+import './about.css'
 
 export default ({ fields }) => {
   const { title, subtitle, featuredImage, section1, section2 } = fields

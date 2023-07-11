@@ -1,17 +1,17 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme';
+import { Container } from 'theme-ui'
 
-import Container from './container';
-import theme from '../theme';
-import { mq } from '../utils';
+import { mq } from '../utils/helpers';
 
-const Root = styled.footer`
+const Root = theme.footer`
   background: white;
   padding-top: ${theme.space[4]};
   padding-bottom: ${theme.space[5]};
 `;
 
-const FooterGrid = styled.div`
+const FooterGrid = theme.div`
   text-align: center;
 
   ${mq[2]} {
@@ -21,14 +21,14 @@ const FooterGrid = styled.div`
   }
 `;
 
-const FooterButtons = styled.div`
+const FooterButtons = theme.div`
   margin-bottom: ${theme.space[3]};
   ${mq[2]} {
     margin-bottom: 0;
   }
 `;
 
-const SocialButton = styled.a`
+const SocialButton = theme.a`
   display: inline-block;
   padding: ${theme.space[1]} ${theme.space[3]};
   background-color: ${theme.colors.lightishGray};
@@ -44,7 +44,7 @@ const SocialButton = styled.a`
   }
 `;
 
-const Info = styled.div`
+const Info = theme.div`
   font-size: ${theme.fontsize[1]};
   color: ${theme.colors.gray};
   opacity: 0.5;

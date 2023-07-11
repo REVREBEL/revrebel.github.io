@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import styled from '@emotion/styled';
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme'
 
-import theme from '../theme';
-
-const TocList = styled.ol`
+const TocList = theme.ol`
   margin: ${theme.space[2]} 0;
   padding-left: ${theme.space[3]};
   border-left: 2px solid ${theme.colors.lightestGray};
   list-style-type: none;
 `;
 
-const TocLink = styled.a`
+const TocLink = theme.a`
   display: block;
   font-size: ${theme.fontsize[2]};
   color: ${theme.colors.gray};

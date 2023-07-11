@@ -1,9 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import Logo from './Logo'
-import NavLink from './NavLink'
-import './Nav.css'
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme'
+import { Container } from 'theme-ui'
+
+import Logo from './logo-file'
+import NavLink from './navlink'
+import './nav.css'
 
 export default ({ handlePopupOpen }) => (
   <nav className='Nav'>

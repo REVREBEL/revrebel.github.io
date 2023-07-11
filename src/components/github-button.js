@@ -1,4 +1,5 @@
-import React, { PureComponent } from 'react';
+import React, { GitHubButton } from 'react';
+
 
 class GitHubStarButton extends PureComponent {
   async componentDidMount() {
@@ -18,10 +19,10 @@ class GitHubStarButton extends PureComponent {
 
     return (
       <GitHubButton
-        href="https://github.com/decaporg/decap-cms"
+        href="https://github.com/REVREBEL/revrebel.github.io"
         data-icon="octicon-star"
         data-show-count="true"
-        aria-label="Star decaporg/decap-cms on GitHub"
+        aria-label="Star REVREBEL/revrebel.github.io on GitHub"
       >
         Star
       </GitHubButton>

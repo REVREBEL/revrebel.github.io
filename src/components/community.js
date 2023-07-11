@@ -1,5 +1,6 @@
 import React from 'react';
-import { css } from '@emotion/core';
+import { ThemeUIProvider } from 'theme-ui';
+import { theme } from './theme/theme';
 
 import Markdownify from './markdownify';
 import PageHero from './page-hero';
@@ -10,7 +11,7 @@ import SectionLabel from './section-label';
 import Page from './page';
 import Grid from './grid';
 import CommunityChannelsList from './community-channels-list';
-import theme from '../theme';
+
 
 function Community({ headline, subhead, sections }) {
   return (

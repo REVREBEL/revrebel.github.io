@@ -1,9 +1,9 @@
-import styled from '@emotion/styled';
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme'
 
-import theme from '../theme';
-import { mq } from '../utils';
+import { mq } from '../utils/helpers';
 
-const Page = styled.div`
+const Page = theme.div`
   padding-top: ${theme.space[5]};
   padding-bottom: ${theme.space[5]};
 

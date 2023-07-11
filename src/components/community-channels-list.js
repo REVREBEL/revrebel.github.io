@@ -1,9 +1,10 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import { ThemeUIProvider } from 'theme-ui';
+import { theme } from './theme/theme';
 
-import theme from '../theme';
 
-const StyledCommunityChannelsList = styled.ul`
+
+const StyledCommunityChannelsList = theme.ul`
   margin-left: 0;
 
   li {

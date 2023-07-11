@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import styled from '@emotion/styled';
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme'
 
-import theme from '../theme';
-import screenshotEditor from '../img/screenshot-editor.jpg';
+import screenshotEditor from '../theme/icons/clipboard-fill.svg';
 
 const VideoLink = styled.a`
   position: relative;

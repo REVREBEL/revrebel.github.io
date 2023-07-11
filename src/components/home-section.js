@@ -1,21 +1,21 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme'
+import { Container } from 'theme-ui'
 
-import Container from './container';
 import Page from './page';
-import theme from '../theme';
 
-const Header = styled.header`
+const Header = theme.header`
   text-align: center;
   padding-top: ${theme.space[6]};
   padding-bottom: ${theme.space[6]};
 `;
 
-const Title = styled.h2`
+const Title = theme.h2`
   font-size: ${theme.fontsize[6]};
 `;
 
-const Text = styled.div`
+const Text = theme.div`
   max-width: 710px;
   margin: 0 auto;
 `;

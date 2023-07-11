@@ -1,9 +1,9 @@
 import React from 'react';
-import { css } from '@emotion/core';
-import styled from '@emotion/styled';
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme'
 
 import Page from './page';
-import { mq } from '../utils';
+import { mq } from '../utils/helpers';
 
 const Children = styled.div`
   overflow: hidden;

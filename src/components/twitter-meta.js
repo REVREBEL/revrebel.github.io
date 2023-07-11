@@ -1,5 +1,6 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme'
 
 function TwitterMeta({ title, description, image, imageAlt }) {
   return (

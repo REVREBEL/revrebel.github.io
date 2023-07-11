@@ -1,9 +1,10 @@
-import styled from '@emotion/styled';
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme'
+import { Container } from 'theme-ui'
+//import { mq } from '../utils';
 
-import { mq } from '../utils';
-import theme from '../theme';
 
-const Grid = styled.div`
+const Grid = theme.div`
   ${mq[2]} {
     display: grid;
     grid-template-columns: repeat(${p => p.cols}, 1fr);

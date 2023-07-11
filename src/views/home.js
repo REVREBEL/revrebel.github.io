@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Content from '../components/Content'
-import PageHeader from '../components/PageHeader'
-import './Home.css'
+import Content from '../components/content'
+import PageHeader from '../components/page-header'
+import './home.css'
 
 export default ({ fields }) => {
   const { title, subtitle, featuredImage, body } = fields

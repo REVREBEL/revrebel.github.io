@@ -1,7 +1,8 @@
 import React from 'react';
-import { css } from '@emotion/core';
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme';
+import { Container } from 'theme-ui';
 
-import Container from './container';
 import Markdown from './markdown';
 import MetaInfo from './meta-info';
 import Page from './page';

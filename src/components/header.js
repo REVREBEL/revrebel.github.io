@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Link, graphql, StaticQuery } from 'gatsby';
-import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme'
+import { Container } from 'theme-ui'
+
 import GitHubButton from 'react-github-btn';
 
-import Container from './container';
 import Notifications from './notifications';
-import DocSearch from './docsearch';
-import searchIcon from '../img/search.svg';
-import theme from '../theme';
-import { mq } from '../utils';
+import DocSearch from './doc-search';
+import searchIcon from '../theme/icons/binoculars-fill.svg';
+import { mq } from '../utils/helpers';
 
-const StyledHeader = styled.header`
+const StyledHeader = theme.header`
   background: ${theme.colors.white};
   padding-top: ${theme.space[3]};
   padding-bottom: ${theme.space[3]};
@@ -38,13 +38,13 @@ const StyledHeader = styled.header`
   }
 `;
 
-const HeaderContainer = styled(Container)`
+const HeaderContainer = theme(Container)`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 `;
 
-const Logo = styled.div`
+const Logo = theme.div`
   ${mq[1]} {
     margin-right: ${theme.space[5]};
   }
@@ -55,7 +55,7 @@ const Logo = styled.div`
   }
 `;
 
-const MenuActions = styled.div`
+const MenuActions = theme.div`
   flex: 1 0 60px;
   display: flex;
   justify-content: flex-end;
@@ -64,7 +64,7 @@ const MenuActions = styled.div`
   }
 `;
 
-const MenuBtn = styled.button`
+const MenuBtn = theme.button`
   background: none;
   border: 0;
   padding: ${theme.space[2]};
@@ -72,9 +72,9 @@ const MenuBtn = styled.button`
   line-height: 1;
 `;
 
-const SearchBtn = styled(MenuBtn)``;
+const SearchBtn = theme(MenuBtn)``;
 
-const ToggleArea = styled.div`
+const ToggleArea = theme.div`
   display: ${p => (p.open ? 'block' : 'none')};
   flex: 1 0 100px;
   width: 100%;
@@ -87,7 +87,7 @@ const ToggleArea = styled.div`
   }
 `;
 
-const SearchBox = styled(ToggleArea)`
+const SearchBox = theme(ToggleArea)`
   ${mq[1]} {
     flex: 1;
     max-width: 200px;
@@ -95,14 +95,14 @@ const SearchBox = styled(ToggleArea)`
   }
 `;
 
-const Menu = styled(ToggleArea)`
+const Menu = theme(ToggleArea)`
   ${mq[1]} {
     flex: 0 0 auto;
     margin-left: auto;
   }
 `;
 
-const MenuList = styled.ul`
+const MenuList = theme.ul`
   ${mq[1]} {
     display: flex;
     justify-content: space-between;
@@ -111,7 +111,7 @@ const MenuList = styled.ul`
   }
 `;
 
-const MenuItem = styled.li`
+const MenuItem = theme.li`
   margin-bottom: ${theme.space[3]};
   ${mq[1]} {
     margin-bottom: 0;
@@ -122,7 +122,7 @@ const MenuItem = styled.li`
   }
 `;
 
-const NavLink = styled(Link)`
+const NavLink = theme(Link)`
   text-decoration: none;
   font-weight: 600;
 `;

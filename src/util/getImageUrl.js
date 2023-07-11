@@ -1,5 +1,4 @@
-const _ceil = require('lodash/ceil')
-
+const _ceil = require('lodash.ceil')
 const sizes = [10, 300, 600, 1200, 1800]
 const outputDir = '/images/uploads/'
 const resizedDir = '/images/uploads/resized/'

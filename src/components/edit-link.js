@@ -1,5 +1,6 @@
 import React from 'react';
-import { css } from '@emotion/core';
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme'
 
 function EditLink({ collection, filename }) {
   return (

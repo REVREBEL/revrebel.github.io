@@ -1,9 +1,8 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import { ThemeUIProvider } from 'theme-ui'
 
-import theme from '../theme';
 
-const StyledMarkdown = styled.div`
+const StyledMarkdown = theme.div`
   > :first-of-type {
     margin-top: 0;
   }

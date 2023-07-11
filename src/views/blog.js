@@ -1,11 +1,11 @@
 import React from 'react'
-import _sortBy from 'lodash/sortBy'
+import sortBy from 'lodash.sortby'
 
-import PageHeader from '../components/PageHeader'
-import PostCategoriesNav from '../components/PostCategoriesNav'
-import PostSection from '../components/PostSection'
+import PageHeader from '../components/page-header'
+import PostCategoriesNav from '../components/post-categories-nav'
+import PostSection from '../components/post-section'
 
-import './Blog.css'
+import './blog.css'
 
 export default ({
   fields,
@@ -14,7 +14,7 @@ export default ({
   showFeatured = true
 }) => {
   const { title, subtitle, featuredImage } = fields
-  posts = _sortBy(posts, ['date']).reverse()
+  posts = sortBy(posts, ['date']).reverse()
 
   return (
     <main className='Blog'>

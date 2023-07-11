@@ -1,6 +1,7 @@
-import styled from '@emotion/styled';
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme'
 
-const Lead = styled.p`
+const Lead = theme.p`
   font-size: 20px;
   margin-bottom: 24px;
 

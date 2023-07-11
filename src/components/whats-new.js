@@ -1,10 +1,10 @@
 import React from 'react';
-import { css } from '@emotion/core';
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme'
 
-import Container from './container';
+import { Container } from 'theme-ui';
 import Release from './release';
 import Grid from './grid';
-import theme from '../theme';
 
 function WhatsNew({ updates }) {
   return (

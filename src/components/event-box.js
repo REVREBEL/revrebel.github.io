@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import moment from 'moment';
-import styled from '@emotion/styled';
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme'
 
 import Markdownify from './markdownify';
-import theme from '../theme';
 
-const Root = styled.div`
+const Root = theme.div`
   text-align: center;
   background: ${theme.colors.darkerGray};
   background-image: linear-gradient(
@@ -20,12 +19,12 @@ const Root = styled.div`
   max-width: 446px;
 `;
 
-const Title = styled.h2`
+const Title = theme.h2`
   font-size: 36px;
   color: white;
 `;
 
-const Cal = styled.div`
+const Cal = theme.div`
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
@@ -33,7 +32,7 @@ const Cal = styled.div`
   max-width: 250px;
 `;
 
-const Month = styled.div`
+const Month = theme.div`
   background: ${theme.colors.primaryDark};
   color: ${theme.colors.gray};
   font-weight: bold;
@@ -43,7 +42,7 @@ const Month = styled.div`
   padding: 8px;
 `;
 
-const Day = styled.div`
+const Day = theme.div`
   font-size: 104px;
   line-height: 1.3;
   font-weight: bold;
@@ -54,14 +53,14 @@ const Day = styled.div`
   border-bottom-right-radius: 8px;
 `;
 
-const CalDates = styled.p`
+const CalDates = theme.p`
   color: white;
   font-weight: bold;
   font-size: ${theme.fontsize[4]};
   margin-bottom: ${theme.space[3]};
 `;
 
-const CalCta = styled.div``;
+const CalCta = theme.div``;
 
 function EventBox({ title, cta }) {
   const [loading, setLoading] = useState(true);

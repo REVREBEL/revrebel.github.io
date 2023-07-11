@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'gatsby';
-import styled from '@emotion/styled';
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme';
+import { Link } from 'theme-ui'
 
 import Button from './button';
 import TableOfContents from './table-of-contents';
-import { mq } from '../utils';
-import theme from '../theme';
+//import { mq } from '../util/';
+
 
 const Menu = styled.nav`
   margin-bottom: ${theme.space[5]};

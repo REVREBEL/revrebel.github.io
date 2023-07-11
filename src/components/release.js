@@ -1,12 +1,10 @@
 import React from 'react';
-import moment from 'moment';
-import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme'
 
 import Markdownify from '../components/markdownify';
-import theme from '../theme';
 
-const ReleaseLink = styled.a`
+const ReleaseLink = theme.a`
   display: block;
   padding: ${theme.space[2]} ${theme.space[3]};
   border-radius: ${theme.radii[1]};
@@ -16,7 +14,7 @@ const ReleaseLink = styled.a`
   }
 `;
 
-const Version = styled.span`
+const Version = theme.span`
   background: ${theme.colors.shadeBlue};
   font-size: ${theme.fontsize[1]};
   padding: 0 ${theme.space[1]};

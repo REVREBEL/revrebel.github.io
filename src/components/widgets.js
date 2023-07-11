@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import styled from '@emotion/styled';
+import { ThemeUIProvider } from 'theme-ui';
+import { Button } from 'theme-ui'
 
 import WidgetDoc from './widget-doc';
-import Button from './button';
-import theme from '../theme';
+import theme from '../theme/theme';
 
-const WidgetsNav = styled.nav`
+import type { Theme } from 'theme-ui';
+
+
+const WidgetsNav = theme.nav`
   margin-bottom: 1rem;
 
   > button {
@@ -14,7 +17,7 @@ const WidgetsNav = styled.nav`
   }
 `;
 
-const WidgetsContent = styled.div`
+const WidgetsContent = theme.div`
   background: ${theme.colors.lightGray};
   padding: ${theme.space[3]};
   border-radius: 4px;

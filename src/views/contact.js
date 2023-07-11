@@ -1,10 +1,10 @@
 import React from 'react'
-import { MapPin, Smartphone, Mail } from 'react-feather'
+import { PiMapPinFill, PiPhoneFill, PiEnvelopeSimpleFill } from 'react-icons/pi'
 
-import PageHeader from '../components/PageHeader'
-import EnquiryFormSimpleAjax from '../components/EnquiryFormSimpleAjax'
-import Content from '../components/Content'
-import './Contact.css'
+import PageHeader from '../components/page-header'
+import EnquiryFormSimpleAjax from '../components/enquiry-form-simple-ajax'
+import Content from '../components/content'
+import './contact.css'
 
 export default ({ fields }) => {
   const { body, title, subtitle, featuredImage, address, phone, email } = fields
@@ -31,17 +31,17 @@ export default ({ fields }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <MapPin /> {address}
+                  <PiMapPinFill /> {address}
                 </a>
               )}
               {phone && (
                 <a className="Contact--Details--Item" href={`tel:${phone}`}>
-                  <Smartphone /> {phone}
+                  <PiPhoneFill /> {phone}
                 </a>
               )}
               {email && (
                 <a className="Contact--Details--Item" href={`mailto:${email}`}>
-                  <Mail /> {email}
+                  <PiEnvelopeSimpleFill /> {email}
                 </a>
               )}
             </div>

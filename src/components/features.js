@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme'
 
 import Markdownify from './markdownify';
-import theme from '../theme';
 
-const Box = styled.div`
+const Box = theme.div`
   margin-bottom: ${theme.space[5]};
 
   img {
@@ -13,12 +13,12 @@ const Box = styled.div`
   }
 `;
 
-const Title = styled.h3`
+const Title = theme.h3`
   color: ${p => (p.kind === 'light' ? theme.colors.primaryLight : theme.colors.primaryLight)};
   font-size: ${theme.fontsize[4]};
 `;
 
-const Text = styled.p`
+const Text = theme.p`
   font-size: 18px;
   a {
     font-weight: 700;

@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import _get from 'lodash/get'
-import _pickBy from 'lodash/pickBy'
+import get from 'lodash.get'
+import pickBy from 'lodash.pickBy'
 
 const onlyTruthyValues = obj => _pickBy(obj, item => item)
 

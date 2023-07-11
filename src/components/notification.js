@@ -1,10 +1,8 @@
 import React from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme'
 
-import theme from '../theme';
-
-const Notif = styled.a`
+const Notif = theme.a`
   background-color: ${theme.colors.darkerGray};
   color: white;
   display: block;

@@ -1,10 +1,11 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme'
 
-import { mq } from '../utils';
-import theme from '../theme';
+import { mq } from '../utils/helpers';
 
-const ChatLink = styled.a`
+
+const ChatLink = theme.a`
   z-index: 100;
   position: fixed;
   bottom: 10px;

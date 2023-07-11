@@ -1,7 +1,7 @@
-import { css } from '@emotion/core';
-import styled from '@emotion/styled';
 
-import theme from '../theme';
+import { ThemeUIProvider } from 'theme-ui'
+import theme from '../theme/theme';
+import { button } from 'theme-ui';
 
 // prettier-ignore
 const Button = styled.button`

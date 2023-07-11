@@ -1,6 +1,7 @@
 import React from 'react';
+import { ThemeUIProvider } from 'theme-ui'
+import { Container } from 'theme-ui'
 
-import Container from './container';
 import SidebarLayout from './sidebar-layout';
 import EditLink from './edit-link';
 import Widgets from './widgets';
