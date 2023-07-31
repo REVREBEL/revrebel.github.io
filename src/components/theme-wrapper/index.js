@@ -1,1 +1,1 @@
-export { ThemeWrapper } from "./theme-wrapper"
+export { ThemeWrapper } from "./ThemeWrapper"

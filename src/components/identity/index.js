@@ -1,1 +1,1 @@
-export { Identity } from "./identity"
+export { Identity } from "./Identity"

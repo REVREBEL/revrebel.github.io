@@ -9,7 +9,7 @@ import { Close } from "@theme-ui/components"
 
 import { SkinContext } from "../../context"
 
-import { ThemeWrapper } from "../theme-wrapper"
+import { ThemeWrapper } from "../ThemeWrapper"
 
 import { SET_IS_SETTINGS_OPEN } from "../../utils/const"
 
