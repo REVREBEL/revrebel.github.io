@@ -1,0 +1,347 @@
+
+  backend:
+    name: git-gateway
+    repo: REVREBEL/revrebel.github.io
+    branch: main
+    api_root: "https://api.github.com"
+    base_url: "https://github.com"
+    auth_endpoint: "auth"
+    cms_label_prefix:	"decamp-cms"
+    # Path to your GitHub repository
+    # optional, defaults to master
+
+  site_url: "https://resource-hub.revrebel.io"
+  display_url: "https://resource-hub.revrebel.io"
+  logo_url: "https://res.cloudinary.com/revrebel/image/upload/v1650759995/RevRebel/icon/outline/icon-outline-multicolor-lightnavy_ryuhlp.png"
+  locale: 'en'
+
+  # This line should *not* be indented
+  publish_mode: editorial_workflow
+
+  # This line should *not* be indented
+  media_folder: "content/images/cms-uploads" 
+
+  # Media files will be stored in the repo under images/uploads
+  public_folder: "public" 
+  # The src attribute for uploaded media will begin with /images/uploads
+
+  # Markdown
+  - { label: 'Blog Post Content', name: 'body', widget: 'markdown' }
+  # Text
+  - { label: "Description", name: "description", widget: "text" }
+  # String 
+  - { label: "Title", name: "title", widget: "string" }
+
+  - name: "property_type"
+    label: "Property Type"
+    widget: "select"
+    multiple: true
+    allow_add: false
+    options: [
+            "[Induge in Luxury]", 
+            "[Uurban Trendsetters]", 
+            "[Style + Sophistication]", 
+            "[Casual Comforts]",
+            "[Small Town Vibes]",  
+            "[Island Chic]", 
+            "[Island Comforts]", 
+            "[Historic Legends]", 
+            "[Iconic Resoirts]",
+    ]
+
+
+collections:
+  - name: "posts"
+    label: "Post"
+    folder: "content/posts"
+    filter:
+      field: language
+      value: en
+    fields:
+      - { label: "Language", name: "language" }
+
+
+collections:
+  - name: "blog" 
+    label: "Blog"
+    folder: "content/posts/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Featured Image", name: "thumbnail", widget: "image" }
+      - { label: "Rating (scale of 1-5)", name: "rating", widget: "number" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+
+
+  - label: "Type of Traveler"
+    name: "tags"
+    widget: "select"
+    multiple: true
+    allow_add: false
+    options: [
+              "[Business]",
+              "[Negotiated]",
+              "[Consortia]",
+              "[Leisure]",
+              "[Extended Stays]",
+    ]
+
+  - label: "Pricing Category"
+    name: "tags"
+    widget: "select"
+    multiple: false
+    allow_add: false
+    options: [
+              "Everyday Rate",
+              "Discount",
+              "Promotion",
+              "Special Event",
+              "Package",
+              "Value Add",
+    ]
+
+  - label: "Pricing Type"
+    name: "tags"
+    widget: "select"
+    multiple: false
+    allow_add: false
+    options: [
+              "Day of Week",
+              "Length of Stay",
+              "Percentage Off",
+              "Limited Time Offer",
+              "Invite Only",
+              "Holiday",
+              "Seasonal",
+              "Local Event",
+              "Room Upgrades",
+              "Suite Discounts",
+              "Geo Based",
+              "International Fencing",
+              "Locals",
+    ]
+
+  - label: "Package Focus"
+    name: "package_focus"
+    widget: "select"
+    multiple: false
+    allow_add: false
+    options: [
+              "Pets",
+              "Reunion",
+              "Friends",
+              "Family",
+              "Kids",
+              "Romance",
+              "Engagement",
+    ]
+
+  - label: "Food & Beverage"
+    name: "food_beverage"
+    widget: "select"
+    multiple: true
+    allow_add: false
+    options: [
+            "Breakfast",
+            "Brunch",
+            "Lunch",
+            "Dinner",
+            "InRoom",
+            "Special Event",
+            "Drinks",
+            "Inclusive Meals",
+    ]
+
+  - label: "Spa"
+    name: "spa"
+    widget: "select"
+    multiple: false
+    allow_add: false
+    options: [
+              "Massage",
+              "Treatments",
+              "InRoom",
+    ]
+
+  - label: "Activities"
+    name: "activites"
+    widget: "select"
+    multiple: false
+    allow_add: false
+    options: [
+              "Ski",
+              "Gold",
+              "Surfing",
+              "Water",
+              "Local Attraction",
+              "Tickets",
+    ]
+
+  - label: "Value Adds"
+    name: "value_adds"
+    widget: "select"
+    multiple: false
+    allow_add: false
+    options: [
+              "Parking",
+              "Points",
+              "Value Add Other",
+              "Free Night(s)",
+              "Beverage",
+              "Internet",
+    ]
+
+  - label: "Credits"
+    name: "credits"
+    widget: "select"
+    multiple: false
+    allow_add: false
+    options: [
+              "Hotel Credit",
+              "Resort Credit",
+              "F&B Credit",
+              "Beverage Credit",
+              "Minibar Credit",
+              "Activity Credit",
+              "Gift Shop Credit",
+    ]
+
+  - label: "GDS Rate Plan Name"
+    name: "gds_rate_plan_name"
+    widget: "string"
+    pattern: [
+            '.{,30}', "The GDS long description has a max of 30 Per line characters"
+    ]
+
+  - label: "GDS Short Description"
+    name: "gds_short_description"
+    widget: "string"
+    pattern: [
+            '.{,94}', "The GDS short description has a max of 94 Per line characters"
+    ]
+
+  - label: "GDS Long Description"
+    name: "gds_long_description"
+    widget: "string"
+    pattern: [
+            '.{,960}', "The GDS long description has a max of 960 Per line characters"
+    ]
+
+  collections:
+  - name: "rate_content"
+    label: "Rate Content"
+    folder: "public/_content/rate"
+    create: true
+    slug: "{{slug}}" 
+    identifier_field: "rate_name"
+
+        name: "basics"
+        label: "The Basics"
+        files:
+        fields:
+          - { label: "Added On", name: "date", widget: "datetime" }
+          - { label: "Rate Name", name: "rate_name", widget: "string" }
+          - { label: "Suggested Rate Code", name: "suggested_rate_code", widget: "string" }
+          - { label: "Internal Offer Description", name: "internal_offer_description", widget: "string" }
+          - { label: "Suggested Marketing Use", name: "suggested_marketing_use", widget: "text" }
+          - { label: "Terms & Conditions", name: "terms_&_conditions", widget: "string" }
+
+        name: "web_descriptions"
+	      label: "[Uurban Trendsetters]"
+        files:
+        fields:
+          - { label: "Web Short Description", name: "web_short_description", widget: "string" }
+          - { label: "Web Long Description", name: "web_long_description", widget: "text" }
+	
+        name: "web_descriptions"
+	      label: "[Style + Sophistication]"
+        files:
+        fields:
+          - { label: "Web Short Description", name: "web_short_description", widget: "string" }
+          - { label: "Web Long Description", name: "web_long_description", widget: "text" }
+	
+        name: "web_descriptions"
+	      label: "[Casual Comforts]"
+        files:
+        fields:
+          - { label: "Web Short Description", name: "web_short_description", widget: "string" }
+          - { label: "Web Long Description", name: "web_long_description", widget: "text" }
+	
+        name: "web_descriptions"
+	      label: "[Small Town Vibes]"
+        files:
+        fields:
+          - { label: "Web Short Description", name: "web_short_description", widget: "string" }
+          - { label: "Web Long Description", name: "web_long_description", widget: "text" }
+	
+        name: "web_descriptions"
+	      label: "[Island Chic]"
+        files:
+        fields:
+          - { label: "Web Short Description", name: "web_short_description", widget: "string" }
+          - { label: "Web Long Description", name: "web_long_description", widget: "text" }
+
+        name: "web_descriptions"
+	      label: "[Island Comforts]"
+        files:
+        fields:
+          - { label: "Web Short Description", name: "web_short_description", widget: "string" }
+          - { label: "Web Long Description", name: "web_long_description", widget: "text" }
+
+        name: "web_descriptions"
+	      label: "[Historic Legends]"
+        files:
+        fields:
+          - { label: "Web Short Description", name: "web_short_description", widget: "string" }
+          - { label: "Web Long Description", name: "web_long_description", widget: "text" }
+	
+        name: "web_descriptions"
+	      label: "[Iconic Resoirts]"
+        files:
+        fields:
+          - { label: "Web Short Description", name: "web_short_description", widget: "string" }
+          - { label: "Web Long Description", name: "web_long_description", widget: "text" }
+	
+	
+        name: "web_descriptions"
+	      label: "[Induge in Luxury]"
+        files:
+        fields:
+          - { label: "Web Short Description", name: "web_short_description", widget: "string" }
+          - { label: "Web Long Description", name: "web_long_description", widget: "text" }
+
+      - name: "voice"
+        label: "Voice Descriptions"
+        files:
+        fields:
+          - { label: "Web Short Description", name: "web_short_description", widget: "string" }
+          - { label: "Web Long Description", name: "web_long_description", widget: "text" }
+
+      - name: "gds"
+        label: "GDS Descriptions"
+        files:
+        fields:
+          - { label: "GDS Rate Plan Name", name: "gds_rate_plan_name", widget: "string" }
+          - { label: "GDS Short Description", name: "gds_short_description", widget: "text" }
+          - { label: "GDS Long Description", name: "gds_long_description", widget: "text" }
+
+      - name: "attributes"
+        label: "Attributes"
+        widget: list
+        files:
+        fields:
+          - { label: "Type of Traveler", name: "type_of_traveler", widget: "select" }
+          - { label: "Pricing Category", name: "pricing_category", widget: "select" }
+          - { label: "Pricing Type", name: "pricing_type", widget: "select" }
+          - { label: "Package Focus", name: "package_focus", widget: "select" }
+          - { label: "Food & Beverage", name: "food_beverage", widget: "select" }
+          - { label: "Spa", name: "spa", widget: "select" }
+          - { label: "Activities", name: "activities", widget: "select" }
+          - { label: "Value Adds", name: "value_adds", widget: "select" }
+          - { label: "Credits", name: "credits", widget: "select" }
+
+ 
