@@ -5,7 +5,7 @@
   "dependencies": {
     "@babel/plugin-transform-react-jsx": "^7.22.5",
     "@flaticon/flaticon-uicons": "^2.2.0",
-    "@npmcli/config": "^6.2.1",
+    "@npmcli/config": "^7.0.0",
     "@rollup/plugin-terser": "^0.4.3",
     "@sideway/formula": "^3.0.1",
     "@theme-ui/color": "^0.16.0",
