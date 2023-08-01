@@ -1,0 +1,102 @@
+
+
+name: "github-action-auto-format"
+description: "Run auto-formatting functionality for different aspects of a repo. (See scripts for details.)"
+uses: "rr-github-bot/github-action-auto-format"
+
+inputs:
+  actions-files-checkout-path:
+    description: 'The path on the github-runner where the auto-format action scripts are checked out at runtime'
+    default: github-action-auto-format
+    required: false
+  bot-name:
+    description: "github-auto-format-bot"
+    required: false
+    default: github-bot
+  bot-email:
+    description: "github-bot@revrebel.io"
+    required: false
+  format-task:
+    description: "Name of formatting task to execute. (Options include: readme, github, terraform, and context.)"
+    required: true
+  workflow-token:
+    description: ${{ secrets.AUTO_FORMAT_BOT_TOKEN }}
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+  
+    - name: "Checkout github-action-auto-format repo to load script locally on runner"
+      uses: actions/checkout@v2
+      with:
+        repository: rr-github-bot/github-action-auto-format
+        path: ${{ inputs.actions-files-checkout-path }}
+        token: ${{ inputs.workflow-token }}
+
+    - name: "Check if format produces git diff"
+      id: ifChange
+      run: git diff --exit-code || echo "::set-output name=changed::yes"
+
+    - name: "Git config"
+      if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}    
+      shell: bash
+      run: |
+        bot-email not provided
+        bot_id=$(curl -sSL 'https://api.github.com/users/${{ inputs.bot-name }}' | jq .id)
+        if [ -z ${{ inputs.bot-email }} ]; then
+          bot_email=${bot_id}+${{ inputs.bot-name }}@users.noreply.github.com
+        else
+          bot_email=${{ inputs.bot-email }}
+        fi
+        git config --local user.name "${{ inputs.bot-name }}"
+        git config --local user.email "${bot_email}"
+        git config --global --add safe.directory /github/workspace
+
+    - name: "Carry out self-tests"
+      if: ${{ contains( github.repository, 'cloudposse/github-action-auto-format') }}
+      uses: docker://cloudposse/build-harness:latest
+      with:
+        entrypoint: /github/workspace/${{ inputs.actions-files-checkout-path }}/scripts/${{ inputs.format-task }}/test.sh
+      env:
+        IGNORE_PATH: ${{ inputs.actions-files-checkout-path }}
+        EVENT_TYPE: ${{ github.event_name }}
+
+    - name: "Carry out requested formatting"
+      if: ${{ ! contains( github.repository, 'cloudposse/github-action-auto-format') }}
+      uses: docker://cloudposse/build-harness:latest
+      with:
+        entrypoint: /github/workspace/${{ inputs.actions-files-checkout-path }}/scripts/${{ inputs.format-task }}/format.sh
+      env:
+        IGNORE_PATH: ${{ inputs.actions-files-checkout-path }}
+        HOST_REPO: ${{ github.repository }}
+        EVENT_TYPE: ${{ github.event_name }}
+
+    - name: "Set PR parameters"
+      id: pr-parameters
+      if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+      shell: bash
+      run: |
+        "/github/workspace/${{ inputs.actions-files-checkout-path }}/scripts/${{ inputs.format-task }}/pr_parameters.sh"
+
+    - name: "Clean up github-action-auto-format repo"
+      shell: bash
+      run: |
+        rm -r ${{ inputs.actions-files-checkout-path }}
+
+    - name: "Push to pre-existing PR branch"
+      if: ${{ github.event_name != 'schedule' && github.event_name != 'workflow_dispatch' }}
+      shell: bash
+      run: |
+        [[ "${{ github.event.sender.login }}" ==  "${{ inputs.bot-name }}" ]] || git push
+
+    - name: "Create pull request and PR branch"
+      if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
+      uses: peter-evans/create-pull-request@v4
+      with:
+        token: ${{ secrets.AUTO_FORMAT_BOT_TOKEN }}
+        commit-message: ${{ steps.pr-parameters.outputs.pr-commit-message }}
+        title: ${{ steps.pr-parameters.outputs.pr-title }}
+        body: ${{ steps.pr-parameters.outputs.pr-body }}
+        labels: ${{ steps.pr-parameters.outputs.pr-labels }}
+        branch: github-action-auto-format
