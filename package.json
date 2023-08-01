@@ -70,7 +70,7 @@
     "svgo": "^3.0.2",
     "theme-ui": "^0.16.0",
     "treeverse": "^3.0.0",
-    "typescript": "^4.6.4",
+    "typescript": "^5.0.0",
     "use-mediaquery": "^1.0.1",
     "web-vitals": "^3.3.2"
   },
