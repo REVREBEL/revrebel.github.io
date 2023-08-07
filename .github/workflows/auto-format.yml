@@ -92,7 +92,7 @@ runs:
 
     - name: "Create pull request and PR branch"
       if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
-      uses: peter-evans/create-pull-request@v4
+      uses: peter-evans/create-pull-request@v5
       with:
         token: ${{ secrets.AUTO_FORMAT_BOT_TOKEN }}
         commit-message: ${{ steps.pr-parameters.outputs.pr-commit-message }}
