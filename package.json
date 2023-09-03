@@ -237,7 +237,7 @@
     "run-s": "^0.0.0",
     "start-server-and-test": "^2.0.0",
     "stylelint": "^15.10.1",
-    "stylelint-config-standard-scss": "^10.0.0",
+    "stylelint-config-standard-scss": "^11.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.10.0",
     "svg-inline-loader": "^0.8.2",
