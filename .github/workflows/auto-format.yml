@@ -28,7 +28,7 @@ runs:
   steps:
   
     - name: "Checkout github-action-auto-format repo to load script locally on runner"
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: rr-github-bot/github-action-auto-format
         path: ${{ inputs.actions-files-checkout-path }}
